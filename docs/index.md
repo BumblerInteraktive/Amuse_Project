@@ -1,4 +1,4 @@
-# my_ds_project
+# Amuse_Project
 
 Add a short description here!
 

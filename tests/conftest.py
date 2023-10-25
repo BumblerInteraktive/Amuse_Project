@@ -1,5 +1,5 @@
 """
-    Dummy conftest.py for my_ds_project.
+    Dummy conftest.py for Amuse_Project.
 
     If you don't know what this is for, just leave it empty.
     Read more about conftest.py under:

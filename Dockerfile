@@ -7,7 +7,7 @@
 #  - optionally execute provided console_script in ENTRYPOINT
 #
 # Alternatively, remove builder steps, take `environment.docker.yml` from your repo
-# and `pip install my_ds_project` using an artifact store. Faster and more robust.
+# and `pip install Amuse_Project` using an artifact store. Faster and more robust.
 
 FROM condaforge/mambaforge AS builder
 WORKDIR /root
@@ -17,11 +17,11 @@ RUN rm -rf dist build
 
 RUN mamba env create -f environment.yml
 # RUN pip install -e . # not needed since it's in environment.yml
-SHELL ["mamba", "run", "-n", "my_ds_project", "/bin/bash", "-c"]
+SHELL ["mamba", "run", "-n", "Amuse_Project", "/bin/bash", "-c"]
 
 # Build package
 RUN tox -e build
-RUN mamba env export -n my_ds_project -f environment.docker.yml
+RUN mamba env export -n Amuse_Project -f environment.docker.yml
 
 
 FROM  condaforge/mambaforge AS runner
@@ -52,7 +52,7 @@ RUN mamba clean --packages --yes
 RUN rm -rf /home/app/.cache/pip
 
 # Make RUN commands use the conda environment
-SHELL ["conda", "run", "-n", "my_ds_project", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "Amuse_Project", "/bin/bash", "-c"]
 
 RUN pip install ./*.whl
 
@@ -61,4 +61,4 @@ RUN pip install ./*.whl
 
 # Code to run when container is started. Replace `YOUR_CONSOLE_SCRIPT` with the
 # value of `console_scripts` in section `[options.entry_points]` of `setup.cfg`.
-# ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "my_ds_project", "YOUR_CONSOLE_SCRIPT"]
+# ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "Amuse_Project", "YOUR_CONSOLE_SCRIPT"]

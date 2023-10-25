@@ -1,4 +1,4 @@
-name: my_ds_project
+name: Amuse_Project
 channels:
   - defaults
   - conda-forge
@@ -38,7 +38,7 @@ dependencies:
   # - dask
   # - snakeviz
   - pip:
-     - -e .  # install git checkout of my_ds_project in editable mode
+     - -e .  # install git checkout of Amuse_Project in editable mode
      # add here only pip-packages that are not available in conda/conda-forge! E.g.:
      # - icecream
      # - jax

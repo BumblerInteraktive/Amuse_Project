@@ -27,7 +27,7 @@
 
 # Contributing
 
-Welcome to `my_ds_project` contributor's guide.
+Welcome to `Amuse_Project` contributor's guide.
 
 This document focuses on getting any potential contributor familiarized with
 the development processes, but [other kinds of contributions] are also appreciated.
@@ -43,7 +43,7 @@ behavior guidelines.
 
 ## Issue Reports
 
-If you experience bugs or general issues with `my_ds_project`, please have a look
+If you experience bugs or general issues with `Amuse_Project`, please have a look
 on the [issue tracker].
 If you don't see anything useful there, please feel free to fire an issue report.
 
@@ -61,10 +61,10 @@ you help us to identify the root cause of the issue.
 
 ## Documentation Improvements
 
-You can help improve `my_ds_project` docs by making them more readable and coherent, or
+You can help improve `Amuse_Project` docs by making them more readable and coherent, or
 by adding missing information and correcting mistakes.
 
-`my_ds_project` documentation uses [Sphinx] as its main documentation compiler.
+`Amuse_Project` documentation uses [Sphinx] as its main documentation compiler.
 This means that the docs are kept in the same repository as the project code, and
 that any documentation update is done in the same way was a code contribution.
 
@@ -77,7 +77,7 @@ that any documentation update is done in the same way was a code contribution.
 
    :::{tip}
       Please notice that the [GitHub web interface] provides a quick way of
-      propose changes in `my_ds_project`'s files. While this mechanism can
+      propose changes in `Amuse_Project`'s files. While this mechanism can
       be tricky for normal code contributions, it works perfectly fine for
       contributing to the docs, and can be quite handy.
 
@@ -134,8 +134,8 @@ source <PATH TO VENV>/bin/activate
 or [Miniconda]:
 
 ```
-conda create -n my_ds_project python=3 six virtualenv pytest pytest-cov
-conda activate my_ds_project
+conda create -n Amuse_Project python=3 six virtualenv pytest pytest-cov
+conda activate Amuse_Project
 ```
 
 ### Clone the repository
@@ -148,8 +148,8 @@ conda activate my_ds_project
 3. Clone this copy to your local disk:
 
    ```
-   git clone git@github.com:YourLogin/my_ds_project.git
-   cd my_ds_project
+   git clone git@github.com:YourLogin/Amuse_Project.git
+   cd Amuse_Project
    ```
 
 4. You should run:
@@ -170,7 +170,7 @@ conda activate my_ds_project
    pre-commit install
    ```
 
-   `my_ds_project` comes with a lot of hooks configured to automatically help the
+   `Amuse_Project` comes with a lot of hooks configured to automatically help the
    developer to check the code being written.
 
 ### Implement your changes
@@ -314,7 +314,7 @@ package:
 
 If you are part of the group of maintainers and have correct user permissions
 on [PyPI], the following steps can be used to release a new version for
-`my_ds_project`:
+`Amuse_Project`:
 
 1. Make sure all unit tests are successful.
 2. Tag the current commit on the main branch with a release tag, e.g., `v1.2.3`.
@@ -367,5 +367,5 @@ on [PyPI], the following steps can be used to release a new version for
 ```{todo} Please review and change the following definitions:
 ```
 
-[repository]: https://github.com/<USERNAME>/my_ds_project
-[issue tracker]: https://github.com/<USERNAME>/my_ds_project/issues
+[repository]: https://github.com/<USERNAME>/Amuse_Project
+[issue tracker]: https://github.com/<USERNAME>/Amuse_Project/issues

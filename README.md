@@ -1,17 +1,17 @@
 [![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/)
 <!-- These are examples of badges you might also want to add to your README. Update the URLs accordingly.
-[![Built Status](https://api.cirrus-ci.com/github/<USER>/my_ds_project.svg?branch=main)](https://cirrus-ci.com/github/<USER>/my_ds_project)
-[![ReadTheDocs](https://readthedocs.org/projects/my_ds_project/badge/?version=latest)](https://my_ds_project.readthedocs.io/en/stable/)
-[![Coveralls](https://img.shields.io/coveralls/github/<USER>/my_ds_project/main.svg)](https://coveralls.io/r/<USER>/my_ds_project)
-[![PyPI-Server](https://img.shields.io/pypi/v/my_ds_project.svg)](https://pypi.org/project/my_ds_project/)
-[![Conda-Forge](https://img.shields.io/conda/vn/conda-forge/my_ds_project.svg)](https://anaconda.org/conda-forge/my_ds_project)
-[![Monthly Downloads](https://pepy.tech/badge/my_ds_project/month)](https://pepy.tech/project/my_ds_project)
-[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter)](https://twitter.com/my_ds_project)
+[![Built Status](https://api.cirrus-ci.com/github/<USER>/Amuse_Project.svg?branch=main)](https://cirrus-ci.com/github/<USER>/Amuse_Project)
+[![ReadTheDocs](https://readthedocs.org/projects/Amuse_Project/badge/?version=latest)](https://Amuse_Project.readthedocs.io/en/stable/)
+[![Coveralls](https://img.shields.io/coveralls/github/<USER>/Amuse_Project/main.svg)](https://coveralls.io/r/<USER>/Amuse_Project)
+[![PyPI-Server](https://img.shields.io/pypi/v/Amuse_Project.svg)](https://pypi.org/project/Amuse_Project/)
+[![Conda-Forge](https://img.shields.io/conda/vn/conda-forge/Amuse_Project.svg)](https://anaconda.org/conda-forge/Amuse_Project)
+[![Monthly Downloads](https://pepy.tech/badge/Amuse_Project/month)](https://pepy.tech/project/Amuse_Project)
+[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter)](https://twitter.com/Amuse_Project)
 -->
 
 test test
 
-# my_ds_project
+# Amuse_Project
 
 > Add a short description here!
 
@@ -21,16 +21,16 @@ A longer description of your project goes here...
 
 In order to set up the necessary environment:
 
-1. review and uncomment what you need in `environment.yml` and create an environment `my_ds_project` with the help of [conda]:
+1. review and uncomment what you need in `environment.yml` and create an environment `Amuse_Project` with the help of [conda]:
    ```
    conda env create -f environment.yml
    ```
 2. activate the new environment with:
    ```
-   conda activate my_ds_project
+   conda activate Amuse_Project
    ```
 
-> **_NOTE:_**  The conda environment will have my_ds_project installed in editable mode.
+> **_NOTE:_**  The conda environment will have Amuse_Project installed in editable mode.
 > Some changes, e.g. in `setup.cfg`, might require you to run `pip install -e .` again.
 
 
@@ -61,7 +61,7 @@ Then take a look into the `scripts` and `notebooks` folders.
 2. Create concrete dependencies as `environment.lock.yml` for the exact reproduction of your
    environment with:
    ```bash
-   conda env export -n my_ds_project -f environment.lock.yml
+   conda env export -n Amuse_Project -f environment.lock.yml
    ```
    For multi-OS development, consider using `--no-builds` during the export.
 3. Update your current environment with respect to a new `environment.lock.yml` using:
@@ -101,7 +101,7 @@ Then take a look into the `scripts` and `notebooks` folders.
 ├── setup.py                <- [DEPRECATED] Use `python setup.py develop` to install for
 │                              development or `python setup.py bdist_wheel` to build.
 ├── src
-│   └── my_ds_project       <- Actual Python package where the main functionality goes.
+│   └── Amuse_Project       <- Actual Python package where the main functionality goes.
 ├── tests                   <- Unit tests which can be run with `pytest`.
 ├── .coveragerc             <- Configuration for coverage reports of unit tests.
 ├── .isort.cfg              <- Configuration for git hook that sorts imports.
