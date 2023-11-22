@@ -10,8 +10,8 @@ def make_plot(disk1, disk2, filename):
     figure = single_frame(x_label, y_label, logy=False, xsize=14, ysize=14)
     from distinct_colours import get_distinct
     c = get_distinct(2)
-    pyplot.xlim(-300, 300)
-    pyplot.ylim(-300, 300)
+    pyplot.xlim(-100, 100)
+    pyplot.ylim(-100, 100)
 
     pyplot.scatter(disk1.x.value_in(units.kpc), disk1.y.value_in(units.kpc),
                    c=c[0], alpha=1, s=1, lw=0)
@@ -32,12 +32,12 @@ def make_galaxies(M_galaxy, R_galaxy, n_halo, n_bulge, n_disk):
     galaxy2.velocity = galaxy1.velocity
     
     galaxy1.rotate(0., numpy.pi/2, numpy.pi/4)
-    galaxy1.position += [100.0, 100, 0] | units.kpc
+    galaxy1.position += [25.0, 25, 0] | units.kpc
     #galaxy1.velocity += [-3000.0, 0.0, -3000.0] | units.km/units.s
-    galaxy1.velocity += [-100.0, 0.0, -100.0] | units.km/units.s
+    galaxy1.velocity += [0.0, 0.0, 0.0] | units.km/units.s
 
     galaxy2.rotate(numpy.pi/4, numpy.pi/4, 0.0)
-    galaxy2.position -= [100.0, 0, 0] | units.kpc
+    galaxy2.position -= [25.0, 0, 0] | units.kpc
     galaxy2.velocity -= [0.0, 0.0, 0] | units.km/units.s
 
     
@@ -67,13 +67,13 @@ def new_option_parser():
                       dest="M_galaxy", default = 1.0e9 | units.MSun,
                       help="Galaxy mass [%default]")
     result.add_option("-R", unit=units.kpc,
-                      dest="R_galaxy", default = 1 | units.kpc,
+                      dest="R_galaxy", default = 3 | units.kpc,
                       help="Galaxy size [%default]")
     result.add_option("--n_bulge", dest="n_bulge", default = 10000,
                       help="number of stars in the bulge [%default]")
     result.add_option("--n_disk", dest="n_disk", default = 0,
                       help="number of stars in the disk [%default]")
-    result.add_option("--n_halo", dest="n_halo", default = 20000,
+    result.add_option("--n_halo", dest="n_halo", default = 10000,
                       help="number of stars in the halo [%default]")
     result.add_option("--t_end", unit=units.Myr,
                       dest="t_end", default = 1000|units.Myr,
@@ -85,3 +85,4 @@ if __name__ == '__main__':
     galaxy1, galaxy2, converter = make_galaxies(o.M_galaxy, o.R_galaxy,
                                                 o.n_halo, o.n_bulge, o.n_disk)
     simulate_merger(galaxy1, galaxy2, converter, o.n_halo, o.t_end)
+    print("done")
