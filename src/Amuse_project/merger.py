@@ -106,7 +106,7 @@ def new_option_parser():
 
 if __name__ == '__main__':
     o, arguments  = new_option_parser().parse_args()
-    stars, converter_stars = initial_conditions.make_galaxy_pair(o.M_galaxy, o.R_galaxy,
+    stars, converter_stars = initial_conditions.make_galaxy_pair(o.M_stars, o.R_galaxy,
                                                 o.n_bulge, o.galaxy1_position, o.galaxy2_position, o.galaxy_velocity)
     gas, converter_gas = initial_conditions.make_cloud_pair(o.M_gas, o.R_galaxy,
                                                 o.n_cloud, o.galaxy1_position, o.galaxy2_position, o.galaxy_velocity)    
