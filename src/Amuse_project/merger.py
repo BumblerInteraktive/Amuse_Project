@@ -60,6 +60,9 @@ def simulate_merger(stars, converter_stars, gas, converter_gas, t_endpoint, num_
     timestamp = datetime.now().strftime("%m%d_%H%M")
     new_folder_name = f"merger_data_{timestamp}"
     data_path = os.path.join(current_directory, new_folder_name)
+
+    os.makedirs(data_path)
+
     save_to_file(gas, stars, 0, data_path)
     t_ends=numpy.linspace(t_endpoint.value_in(units.Myr)/num_fig,t_endpoint.value_in(units.Myr),num_fig) |units.Myr
 
