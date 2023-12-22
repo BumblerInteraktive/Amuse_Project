@@ -42,7 +42,7 @@ def make_cloud_pair(Mcloud, Rcloud, n_cloud, galaxy1_position, galaxy2_position,
     Returns gas_particles corresponding to those conditions as well as an appropriate converter
     '''
     converter = nbody_system.nbody_to_si(Mcloud,Rcloud)
-    gas=molecular_cloud(targetN=n_cloud,convert_nbody=conv,
+    gas=molecular_cloud(targetN=n_cloud,convert_nbody=converter,
                     base_grid=body_centered_grid_unit_cube).result
     
     gas2=Particles(len(gas))
