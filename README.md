@@ -1,73 +1,24 @@
-[![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/)
-<!-- These are examples of badges you might also want to add to your README. Update the URLs accordingly.
-[![Built Status](https://api.cirrus-ci.com/github/<USER>/Amuse_Project.svg?branch=main)](https://cirrus-ci.com/github/<USER>/Amuse_Project)
-[![ReadTheDocs](https://readthedocs.org/projects/Amuse_Project/badge/?version=latest)](https://Amuse_Project.readthedocs.io/en/stable/)
-[![Coveralls](https://img.shields.io/coveralls/github/<USER>/Amuse_Project/main.svg)](https://coveralls.io/r/<USER>/Amuse_Project)
-[![PyPI-Server](https://img.shields.io/pypi/v/Amuse_Project.svg)](https://pypi.org/project/Amuse_Project/)
-[![Conda-Forge](https://img.shields.io/conda/vn/conda-forge/Amuse_Project.svg)](https://anaconda.org/conda-forge/Amuse_Project)
-[![Monthly Downloads](https://pepy.tech/badge/Amuse_Project/month)](https://pepy.tech/project/Amuse_Project)
-[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter)](https://twitter.com/Amuse_Project)
--->
-
-test test
-
 # Amuse_Project
+This is the github of the AMUSE project *Merging of quenched dwarf galaxies* by Kristian Knudsgaard, Lea Krarup and Carol Dong.
 
-> Add a short description here!
+The group report can be found in the reports directory, slides of both presentations can be found in the presentations directory.
 
-A longer description of your project goes here...
+The code used to produce the data is in the src directory, while the scripts used to analyze the data are located in the scripts directory. The data used in the report is located in the data directory.
 
-## Installation
+## How to run our code
+In order to run a merger simulation, one needs to run the **merger.py** code in the src directory. The parameters of this can be changed using the option parser options.  Most notably, one can add an initial velocity (-v) to the two galaxies, which is the parameter we varied in our project. Additionally, one can make the code run faster by reducing the number of particles (--n_bulge for stars, --n_cloud for gas).
+This produces a folder of hdf5 files, that can be read and turned into density plots using the **read_and_plot_data.py** script in the scripts directory. When running the script, one has to specify the path to the data directory to read it using --dir.
 
-In order to set up the necessary environment:
+## Group rubric
+The research question that we agreed on is:
+"Do mergers of two quenched dwarf galaxies trigger star formation?"
 
-1. review and uncomment what you need in `environment.yml` and create an environment `Amuse_Project` with the help of [conda]:
-   ```
-   conda env create -f environment.yml
-   ```
-2. activate the new environment with:
-   ```
-   conda activate Amuse_Project
-   ```
+The agreed upon minimum requirement was to be able to model galaxies made up of DM/stellar particles and gas, and merge them.
 
-> **_NOTE:_**  The conda environment will have Amuse_Project installed in editable mode.
-> Some changes, e.g. in `setup.cfg`, might require you to run `pip install -e .` again.
+The expected figures were a snapshot of the gas before and after the merger, as well as a histogram showing the density distribution of the gas.
 
+Additionally, to improve our grade we could vary the impact of the galaxies, to see how angular momentum and velocity influence the SFR after the merger.
 
-Optional and needed only once after `git clone`:
-
-3. install several [pre-commit] git hooks with:
-   ```bash
-   pre-commit install
-   # You might also want to run `pre-commit autoupdate`
-   ```
-   and checkout the configuration under `.pre-commit-config.yaml`.
-   The `-n, --no-verify` flag of `git commit` can be used to deactivate pre-commit hooks temporarily.
-
-4. install [nbstripout] git hooks to remove the output cells of committed notebooks with:
-   ```bash
-   nbstripout --install --attributes notebooks/.gitattributes
-   ```
-   This is useful to avoid large diffs due to plots in your notebooks.
-   A simple `nbstripout --uninstall` will revert these changes.
-
-
-Then take a look into the `scripts` and `notebooks` folders.
-
-## Dependency Management & Reproducibility
-
-1. Always keep your abstract (unpinned) dependencies updated in `environment.yml` and eventually
-   in `setup.cfg` if you want to ship and install your package via `pip` later on.
-2. Create concrete dependencies as `environment.lock.yml` for the exact reproduction of your
-   environment with:
-   ```bash
-   conda env export -n Amuse_Project -f environment.lock.yml
-   ```
-   For multi-OS development, consider using `--no-builds` during the export.
-3. Update your current environment with respect to a new `environment.lock.yml` using:
-   ```bash
-   conda env update -f environment.lock.yml --prune
-   ```
 ## Project Organization
 
 ```
