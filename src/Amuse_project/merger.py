@@ -8,6 +8,7 @@ from amuse.community.bhtree.interface import BHTree
 from amuse.community.fi.interface import Fi
 import initial_conditions
 import os
+from datetime import datetime
 
 
 
