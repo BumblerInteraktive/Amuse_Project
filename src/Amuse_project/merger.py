@@ -18,7 +18,7 @@ def save_to_file(gas_particles, star_particles, index, data_path):
     write_set_to_file(star_particles, filename2, "amuse")
 
 
-def simulate_merger(stars, converter_stars, gas, converter_gas, t_endpoint, num_fig, data_path):
+def simulate_merger(stars, converter_stars, gas, converter_gas, t_endpoint, num_fig):
     dynamics = BHTree(converter_stars) 
     dynamics.parameters.epsilon_squared = (100 | units.parsec)**2 
     dynamics.particles.add_particles(stars)
@@ -55,6 +55,10 @@ def simulate_merger(stars, converter_stars, gas, converter_gas, t_endpoint, num_
     gravhydro.add_system(dynamics, (hydro,))
     gravhydro.timestep = 10 | units.Myr
 
+    current_directory = os.getcwd()
+    timestamp = datetime.now().strftime("%m%d_%H%M")
+    new_folder_name = f"merger_data_{timestamp}"
+    data_path = os.path.join(current_directory, new_folder_name)
     save_to_file(gas, stars, 0, data_path)
     t_ends=numpy.linspace(t_endpoint.value_in(units.Myr)/num_fig,t_endpoint.value_in(units.Myr),num_fig) |units.Myr
 
@@ -100,8 +104,6 @@ def new_option_parser():
     result.add_option("-v", unit=units.km/units.s,
                       dest="galaxy_velocity", default = [0.0, 0.0, 0.0] | units.km/units.s,
                       help="Velocity vector of galaxies [%default]")
-    result.add_option("-p", dest="data_path", default =  os.path.abspath(os.path.join(os.getcwd(),'data', 'interim')),
-                      help="Path where data should be saved")
     return result
 
 if __name__ == '__main__':
@@ -110,4 +112,5 @@ if __name__ == '__main__':
                                                 o.n_bulge, o.galaxy1_position, o.galaxy2_position, o.galaxy_velocity)
     gas, converter_gas = initial_conditions.make_cloud_pair(o.M_gas, o.R_galaxy,
                                                 o.n_cloud, o.galaxy1_position, o.galaxy2_position, o.galaxy_velocity)    
-    simulate_merger(stars, converter_stars, gas, converter_gas, o.t_end, o.num_fig, o.data_path)
+    
+    simulate_merger(stars, converter_stars, gas, converter_gas, o.t_end, o.num_fig)
