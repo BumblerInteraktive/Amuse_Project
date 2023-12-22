@@ -11,12 +11,14 @@ from matplotlib.colors import Normalize
 from scipy.interpolate import interpn
 
 def read_from_file(index):
-    filename = "data/gas_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
-    filename2 = "data/star_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
+    filename = "data_60velocity/gas_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
+    filename2 = "data_60velocity/star_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
+    # filename = "/home/lea/Amuse-env/gas_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
+    # filename2 = "/home/lea/Amuse-env/star_particle_data_i{0:04}.hdf5".format(index.value_in(units.Myr))
     gas_particles = read_set_from_file(filename, format="amuse")
     star_particles = read_set_from_file(filename2, format="amuse")
     return gas_particles, star_particles
-def create_density_histogram(gas, filename):
+def create_density_histogram(gas,t_end, filename):
     #gas_positions=numpy.array([gas.x.value_in(units.kpc),gas.y.value_in(units.kpc),gas.z.value_in(units.kpc)])
     # particle_mass = 1.0  # Adjust based on your data
     # volume = numpy.prod(numpy.max(gas_positions, axis=0) - numpy.min(gas_positions, axis=0))
@@ -42,12 +44,14 @@ def create_density_histogram(gas, filename):
     #     densities[i] = numpy.sum(weights) / (numpy.pi * smoothing_length**2)
     xyz = numpy.vstack([gas.x.value_in(units.kpc),gas.y.value_in(units.kpc),gas.z.value_in(units.kpc)])
     kde = stats.gaussian_kde(xyz)
-    densities = kde(xyz)
+    densities = 1e4*kde(xyz)
+    densities*=1.989e33
+    densities/=(3.086e21)**3
     # Create and save the histogram
-    plt.hist(densities, bins=100, color='blue', edgecolor='black', range=(0.0,0.05))
-    plt.xlabel('Density')
+    plt.hist(densities, bins=30, color='blue', edgecolor='black', range=(0.0,7.5e-29))
+    plt.xlabel('Density (g/cm^3)')
     plt.ylabel('Count')
-    plt.title('Gas Particle Densities Histogram')
+    plt.title('Gas Particle Densities at t='+str(int(t_end.value_in(units.Myr)))+'Myr')
     plt.savefig(filename)
     plt.close()
 def density_scatter( stars ,gas,filename,sort = True, bins = 20,save=False, **kwargs )   :
@@ -83,18 +87,21 @@ def density_scatter( stars ,gas,filename,sort = True, bins = 20,save=False, **kw
     if save:
         fig.savefig(filename)  
 
-num_fig = 30
+num_fig = 60
 t_endpoint = 3000 | units.Myr
 t_ends = numpy.linspace(t_endpoint.value_in(units.Myr)/num_fig,t_endpoint.value_in(units.Myr),num_fig) |units.Myr
 for t_end in t_ends:
+    if t_end> 2200 | units.Myr:
+        break
     gas, stars = read_from_file(t_end)
-    create_density_histogram(gas, filename="/home/lea/Amuse-env/pictures/densities_histogram_t"+str(int(t_end.value_in(units.Myr)))+"Myr.png")
-    # density_scatter(stars, gas,  filename="/home/lea/Amuse-env/pictures/densities_scatter_t"+str(int(t_end.value_in(units.Myr)))+"Myr.png", save=True)
+    create_density_histogram(gas,t_end, filename="/home/lea/Amuse-env/pictures/flyby_histogram_t"+str(int(t_end.value_in(units.Myr)))+"Myr.png")
+    #   density_scatter(stars, gas,  filename="/home/lea/Amuse-env/pictures/densities_scatter_t"+str(int(t_end.value_in(units.Myr)))+"Myr.png", save=True)
 #     make_plot(stars, gas, filename="/home/lea/Amuse-env/pictures/Galaxy_merger_t"+str(int(t_end.value_in(units.Myr)))+"Myr.png")
 
-# gas,stars = read_from_file(3000.0| units.Myr)
-# create_density_histogram(stars, filename="/home/lea/Amuse-env/pictures/densities_final.png")
-# plt.close()
-# gas,stars = read_from_file(100.0| units.Myr)
-# create_density_histogram(stars, filename="/home/lea/Amuse-env/pictures/densities_initial.png")
-# density_scatter(stars, gas,  filename="/home/lea/Amuse-env/pictures/densities_scatter_initial.png", save=True)
+# gas,stars = read_from_file(2200.0| units.Myr)
+# # create_density_histogram(stars, filename="/home/lea/Amuse-env/pictures/densities_final.png")
+# # plt.close()
+# # gas,stars = read_from_file(100.0| units.Myr)
+# create_density_histogram(stars,2200.0| units.Myr, filename="/home/lea/Amuse-env/pictures/densities_fast_vel2.png")
+
+# density_scatter(stars, gas,  filename="/home/lea/Amuse-env/pictures/densities_scatter_fast_vel2.png", save=True)
