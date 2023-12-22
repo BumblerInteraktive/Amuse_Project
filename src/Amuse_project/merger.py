@@ -100,7 +100,7 @@ def new_option_parser():
     result.add_option("-v", unit=units.km/units.s,
                       dest="galaxy_velocity", default = [0.0, 0.0, 0.0] | units.km/units.s,
                       help="Velocity vector of galaxies [%default]")
-    result.add_option("-p", dest="data_path", default =  "../../data/interim/",
+    result.add_option("-p", dest="data_path", default =  os.path.abspath(os.path.join(os.getcwd(), '..', '..', 'data')),
                       help="Path where data should be saved")
     return result
 
